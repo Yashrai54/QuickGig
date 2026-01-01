@@ -51,10 +51,12 @@ export const handleSignIn=async(req,res)=>{
     const session = jwt.sign({"userId":user._id},process.env.JWT_SECRET_KEY,{
         expiresIn:"1h"
     })
-    res.cookie("session",session,{
-        sameSite:"lax",
-        secure:false
-    })
+    res.cookie("session", session, {
+  httpOnly: true,
+  sameSite: "none",
+  secure: true
+})
+
     console.log("signin success")
     return res.status(200).json({"message":"SignIn successful"})
 }
