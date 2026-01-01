@@ -40,9 +40,9 @@ const Navbar = () => {
 
         {/* Mobile Hamburger */}
         <IconButton 
-          className='md:hidden lg:hidden' 
           onClick={toggleDrawer}
           sx={{ color: '#0ea5e9' }}
+          className="md:!hidden"
         >
           <HiMenuAlt3 size={30} />
         </IconButton>
@@ -59,7 +59,6 @@ const Navbar = () => {
             padding: '20px'
           }
         }}
-        className:"md:hidden lg:hidden"
       >
         <div className='flex flex-col h-full'>
           {/* Close Button */}
