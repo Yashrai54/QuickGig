@@ -13,7 +13,7 @@ const app = express()
 const server = createServer(app)
 const io = new Server(server, {
   cors: {
-    origin: "https://quick-gig-eight.vercel.app/", 
+    origin: "https://quick-gig-eight.vercel.app", 
     methods: ["GET", "POST"],
     credentials: true,
     allowedHeaders:""
