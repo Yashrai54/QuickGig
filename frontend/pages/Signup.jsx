@@ -15,7 +15,7 @@ const Signup = () => {
 
     const handleSubmit = async () => {
         try {
-            const res = await axios.post("http://localhost:4000/api/auth/signup", { username, email, password })
+            const res = await axios.post("https://quickgig-jous.onrender.com/api/auth/signup", { username, email, password })
             setMsg(res.data.message)
             setErr("")
             navigate("/signin")
