@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                await axios.get("http://localhost:4000/me", { withCredentials: true });
+                await axios.get("https://quickgig-jous.onrender.com/me", { withCredentials: true });
                 setIsAuth(true);
             } catch {
                 setIsAuth(false);
