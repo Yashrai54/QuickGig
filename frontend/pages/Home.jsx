@@ -42,7 +42,7 @@ const Home = () => {
       <main className='m-5 flex flex-col lg:flex-row justify-center items-center gap-[20px] lg:gap-[40px] px-4'>
         <motion.div initial={{ opacity: 0, x: 0 }} animate={{ opacity: 1, x: 30 }}
           transition={{ duration: 0.8, ease: "easeIn" }}
-          className='w-full max-w-[500px] mt-10'> 
+          className='w-full max-w-[500px] mt-5 md:mt-10'> 
           <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold text-black text-center lg:text-left'>
             Are you finding local clients?
           </h1>
