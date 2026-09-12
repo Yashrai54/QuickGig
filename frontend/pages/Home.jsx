@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
    const [nearbyProjects,setNearbyProjects] = useState([])
    const [message,setMsg] = useState("")
+   const [search, setSearch] = useState("")
    const navigate = useNavigate()
    function getLocation(){
     return new Promise((res,rej)=>{
@@ -19,6 +20,31 @@ const Home = () => {
       ),rej)
     })
    }
+   async function getLocationAndSearch() {
+  if (!search.trim()) return
+
+  try {
+    const res = await axios.get(
+      "https://quickgig-jous.onrender.com/api/project/search",
+      {
+        params: {
+          query: search
+        },
+        withCredentials: true
+      }
+    )
+
+    navigate("/near", {
+      state: {
+        projects: res.data.foundProjects,
+        message: res.data.message
+      }
+    })
+  } catch (error) {
+    console.error(error)
+    setMsg("Something Broke")
+  }
+}
    async function handleNearbyProjects(){
       const {lat,lng} = await getLocation()
 
@@ -57,8 +83,8 @@ const Home = () => {
             ' onClick={()=>handleNearbyProjects()}>
               Check for Projects
             </button>
-          <input type="search" name="job-search" id="job-search"
-            placeholder='Search freelance work' className='sm:ml-5 px-4 py-3 sm:py-4 border-2 border-sky-500 rounded-md outline-none
+          <input type="search" name="job-search" id="job-search" value={search} onChange={(e)=>setSearch(e.target.value)}
+            placeholder='Search freelance work globally' className='sm:ml-5 px-4 py-3 sm:py-4 border-2 border-sky-500 rounded-md outline-none
              transition-all duration-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-200 w-full sm:w-auto
              '  />
           <span className="items-center sm:ml-3">
