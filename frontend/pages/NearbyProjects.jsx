@@ -42,7 +42,7 @@ const NearbyProjects = () => {
   }
   return (
     <div className="space-y-4 overflow-y-auto text-center p-4">
-      {projects.length < 0 ? (<p>{message}</p>) : projects.map(p => (
+      {projects.length === 0 ? (<p>{message}</p>) : projects.map(p => (
         <div
           className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-sky-500 transition-colors"
           key={p._id}
