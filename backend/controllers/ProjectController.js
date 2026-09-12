@@ -61,9 +61,9 @@ export const updateProject = async (req, res) => {
     }
 
     try {
-        const project = await ProjectModel.updateOne({ _id: projectId, clientId: req.user.userId }, {
+        const project = await ProjectModel.findOneAndUpdate({ _id: projectId, clientId: req.user.userId }, {
             $set:updates
-        })
+        },{new:true})
 
         if (!project) {
             console.log("no project")
