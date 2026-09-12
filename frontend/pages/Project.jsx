@@ -13,7 +13,7 @@ const Project = () => {
     const [msg, setMsg] = useState("")
     const [err, setErr] = useState("")
     const [projects, setProjects] = useState([])
-    const [update, setUpdate] = useState(false)
+    const [update, setUpdate] = useState(null)
     const [updatedTitle,setUpdatedTitle] = useState("")
     const [updatedDescription,setUpdatedDescription] = useState("")
 
@@ -100,9 +100,9 @@ const Project = () => {
                                             <h3 className="font-semibold text-lg text-gray-800 mb-2">{p.title}</h3>
                                             <div className=' flex gap-10 justify-center'>
                                                 <div>
-                                                    <CiEdit size={20} className='m-1 cursor-pointer' onClick={()=>setUpdate(true)} />
+                                                    <CiEdit size={20} className='m-1 cursor-pointer' onClick={()=>setUpdate(p._id)} />
                                                     
-                                                    {update? <button
+                                                    {update  === p._id ? <button
                                                         onClick={() => handleUpdate(p._id)}
                                                         className=" m-auto bg-sky-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-sky-600 transition-colors"
                                                     >
