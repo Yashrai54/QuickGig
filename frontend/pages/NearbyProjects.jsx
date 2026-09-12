@@ -42,24 +42,33 @@ const NearbyProjects = () => {
   }
   return (
     <div className="space-y-4 overflow-y-auto text-center p-4">
-      {projects.length === 0 ? (<p>{message}</p>) : projects.map(p => (
-        <div
-          className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-sky-500 transition-colors"
-          key={p._id}
-        >
-          <h1 className="font-semibold text-lg text-gray-800 mb-2">{p.title}</h1>
-          <p className="text-gray-600 mb-3">{p.description}</p>
-          <Button
-            variant="contained"
-            startIcon={<FaMessage />}
-            onClick={() => toggleDrawer(p)}
-            sx={{ textTransform: 'none' }}
-          >
-            Message
-          </Button>
-        </div>
-      ))}
+      {projects.length === 0 ? (
+  <p className="text-gray-500 text-lg">No projects</p>
+) : (
+  projects.map(p => (
+    <div
+      className="bg-gray-50 p-4 rounded-lg border border-gray-200 hover:border-sky-500 transition-colors"
+      key={p._id}
+    >
+      <h1 className="font-semibold text-lg text-gray-800 mb-2">
+        {p.title}
+      </h1>
 
+      <p className="text-gray-600 mb-3">
+        {p.description}
+      </p>
+
+      <Button
+        variant="contained"
+        startIcon={<FaMessage />}
+        onClick={() => toggleDrawer(p)}
+        sx={{ textTransform: 'none' }}
+      >
+        Message
+      </Button>
+    </div>
+  ))
+)}
       <Drawer
         open={open}
         onClose={() => toggleDrawer()}
