@@ -21,3 +21,36 @@ export default async function nearbyProjects(req,res){
       }
       return res.status(200).json({"message":"Success",foundProjects:projects})
 }
+
+
+export default async function searchProjects(req, res) {
+  const { query } = req.query
+
+  if (!query?.trim()) {
+    return res.status(400).json({
+      message: "Search query is required",
+      foundProjects: []
+    })
+  }
+
+  try {
+    const projects = await ProjectModel.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { description: { $regex: query, $options: "i" } }
+      ]
+    })
+
+    return res.status(200).json({
+      message: "Success",
+      foundProjects: projects
+    })
+  } catch (error) {
+    console.error(error)
+
+    return res.status(500).json({
+      message: "Something went wrong",
+      foundProjects: []
+    })
+  }
+}
