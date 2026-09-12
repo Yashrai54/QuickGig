@@ -1,6 +1,6 @@
 import ProjectModel from "../models/project.model.js"
 
-export default async function nearbyProjects(req,res){
+export async function nearbyProjects(req,res){
       const  {lat,lng} = req.params
       
       const projects = await ProjectModel.find({
@@ -23,7 +23,7 @@ export default async function nearbyProjects(req,res){
 }
 
 
-export default async function searchProjects(req, res) {
+export  async function searchProjects(req, res) {
   const { query } = req.query
 
   if (!query?.trim()) {

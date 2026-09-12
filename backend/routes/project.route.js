@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { addProject, deleteProject, getProjects, updateProject } from "../controllers/ProjectController.js";
-import nearbyProjects from "../controllers/GeoController.js";
-import searchProjects from "../controllers/GeoController.js"
+import {nearbyProjects,searchProjects} from "../controllers/GeoController.js";
 
 const projectRouter = Router()
 
